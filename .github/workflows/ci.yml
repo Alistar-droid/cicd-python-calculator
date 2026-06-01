@@ -11,7 +11,7 @@ permissions:
   contents: read
   security-events: write  # ← Obligatoire pour uploader les résultats Trivy
   
-actions: read
+  actions: read
 
 jobs:
 
@@ -23,7 +23,7 @@ jobs:
         python-version: [3.8, 3.9, '3.10']  # '3.10' entre guillemets !
 
     
-steps:
+    steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -64,8 +64,7 @@ steps:
           output:    'trivy-results.sarif'
           severity:  'CRITICAL,HIGH'
 
-      - 
-name: Upload results to GitHub Security tab
+      - name: Upload results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: 'trivy-results.sarif'
