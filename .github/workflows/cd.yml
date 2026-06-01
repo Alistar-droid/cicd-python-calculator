@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: ["CI pipeline"]  # ← Copie-colle EXACTEMENT depuis name: du ci.yml
     
-types:
+    types:
       - completed
 
 jobs:
@@ -31,4 +31,4 @@ jobs:
           file:    ./Dockerfile
           push:    true   # ← Sans ça, image buildée mais jamais envoyée
           
-tags:    ${{ secrets.DOCKER_USERNAME }}/calculator:latest
+          tags:    ${{ secrets.DOCKER_USERNAME }}/calculator:latest
